@@ -6,7 +6,7 @@ Non-official wrapper API for mail.ru cloud designed to generate a link or links 
 
 ### Install
 ```
-pip install git+https://github.com/aratakileo/mailru-cloud-guest-api-wrapper.git
+pip install git+https://github.com/aratakileo/mailru-cloud-guest-api.git
 ```
 
 <details>
@@ -14,7 +14,7 @@ pip install git+https://github.com/aratakileo/mailru-cloud-guest-api-wrapper.git
   
 
 ```
-py -m pip install git+https://github.com/aratakileo/mailru-cloud-guest-api-wrapper.git
+py -m pip install git+https://github.com/aratakileo/mailru-cloud-guest-api.git
 ```
 </details>
 
@@ -23,7 +23,7 @@ py -m pip install git+https://github.com/aratakileo/mailru-cloud-guest-api-wrapp
   
 
 ```
-python3 -m pip install git+https://github.com/aratakileo/mailru-cloud-guest-api-wrapper.git
+python3 -m pip install git+https://github.com/aratakileo/mailru-cloud-guest-api.git
 ```
 </details>
 
