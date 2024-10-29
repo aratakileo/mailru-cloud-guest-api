@@ -27,49 +27,52 @@ python3 -m pip install git+https://github.com/aratakileo/mailru-cloud-guest-api.
 ```
 </details>
 
+
+### Quick how to use
+You can easily get a link to stream a file download by writing the following code, which will output the streaming link to the console:
+
+```py
+from mailru_cloud_guest_api import FileStreamGenerator
+
+# replace `https://cloud.mail.ru/public/file_id` with your public link
+print(FileStreamGenerator.of('https://cloud.mail.ru/public/file_id').generate().stream_link)
+```
+
 ### How to use
-To get a list of links to send a request to form a link stream, then you will need the following code:
+This library offers a special object for generating a file stream link. You can create it as follows:
+
 ```py
-from mailru_cloud_guest_api import MailruCloudDispatcherApiRequester
+from mailru_cloud_guest_api import FileStreamGenerator
 
-dispatcher_api_requester = MailruCloudDispatcherApiRequester()
-
-print(dispatcher_api_requester.request_answer)
+# replace `https://cloud.mail.ru/public/file_id` with your public link
+streamGenerator = FileStreamGenerator.of('https://cloud.mail.ru/public/file_id')
 ```
 
-If there are no problems, then this code will output a dictionary containing various kinds of links to request a stream link. If something went wrong, `None` will be returned.
-
-To send a new request, use the following method:
+Before generating the file stream link, you can configure the generator using the following methods:
 ```py
-print(dispatcher_api_requester.send_request())
+# set request email
+streamGenerator.setMail('your_mail@mail.ru')
+
+# set file stream link in seconds
+streamGenerator.set_lifetime_in_seconds(10)
+
+# set file stream link in minutes
+streamGenerator.set_lifetime_in_minutes(5)
+
+# set file stream link in hours
+streamGenerator.set_lifetime_in_hours(1)
 ```
 
-To generate a new request link, use the following method:
+After configuring the generator, you can get a special object that stores the file stream link:
+
 ```py
-print(dispatcher_api_requester.generate_request_link())
-```
+container = streamGenerator.generate()
 
-To get a stream link to download a file, you will need the following code:
-```py
-from mailru_cloud_guest_api import MailruCloudFileStreamLinkGenerator
+# print file stream link
+print(container.stream_link)
 
-# replace `https://cloud.mail.ru/public/file_id` to your public link
-file_stream_link_generator = MailruCloudFileStreamLinkGenerator('https://cloud.mail.ru/public/file_id')
-
-print(file_stream_link_generator.file_stream_link)
-```
-
-If there are no problems, then this code will output a stream link. If something went wrong, `None` will be returned.
-
-To generate a new stream link, use the following method:
-```py
-print(file_stream_link_generator.generate_link())
-```
-
-To download a file by stream link, use following method:
-```py
-# replace `my_file.zip` to the filename as which the downloaded file will be saved
-print(file_stream_link_generator.download('my_file.zip'))
+# download file (replace `my_file.zip` with the filename as which the downloaded file will be saved)
+container.download('my_file.zip')
 ```
 
 ### License

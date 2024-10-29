@@ -5,9 +5,9 @@ except ImportError:
 
 setup(
     name='mailru_cloud_guest_api',
-    version='1.0.0',
+    version='1.0.1',
     packages=['mailru_cloud_guest_api'],
-    url='https://github.com/aratakileo/mailru-cloud-guest-api-wrapper',
+    url='https://github.com/aratakileo/mailru-cloud-guest-api',
     license='MIT',
     author='Arataki Leo',
     author_email='aratakileo@gmail.com',
